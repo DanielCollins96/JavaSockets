@@ -21,7 +21,7 @@ public class Server {
             String[] splitLine = line.split("\t",2);
             wordArray.add(splitLine);
         }
-        System.out.println(wordArray.size());
+
 
         // System.out.println(text.getAbsolutePath());        
         ServerSocket welcomeSocket = new ServerSocket(6789);
@@ -33,24 +33,22 @@ public class Server {
 
             clientSentence = inFromClient.readLine();
             capitalizedSentence = (clientSentence.toUpperCase() + '\n');
-            System.out.println(capitalizedSentence.equals("hi" + '\n'));
+
             for (int i = 0; i < wordArray.size(); i++){
-                    // Iterator<String[]> itr = wordArray.iterator();
+
                     for (String[] array: wordArray){
                         String wordCode = array[0];
-                        if (capitalizedSentence.equals(wordCode))
+                        if (capitalizedSentence.equals(wordCode + '\n'))
                         {
-                            System.out.println(array[1]);
-                            capitalizedSentence = array[1];
+                            // System.out.println(array[1]);
+                            String newValue = array[1] + '\n';
+                            capitalizedSentence = newValue;
                         }
-                        for (String s : array){
-                            // System.out.println(s);
-                        }
+
                     }
-                    // System.out.println(wordArray.get(i));
                 
             }
-
+            System.out.println(capitalizedSentence);
             outToClient.writeBytes(capitalizedSentence);
         } 
     }
