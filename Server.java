@@ -45,12 +45,13 @@ public class Server {
                         for (int j = 0; j < inputs.length; j++)
                         {
                             String inputIndexed = inputs[j];
-                                System.out.println(inputIndexed);
+                                // System.out.println(inputIndexed);
 
                             if (inputIndexed.equals(wordCode + '\n'));
                             {
-                                String newValue = array[1] + '\n';
-                                capitalizedSentence = capitalizedSentence.replaceAll("\\b"+inputIndexed+ "\\b", newValue);
+                                System.out.println(wordCode + ' ' + inputIndexed);
+                                // String newValue = array[1] + '\n';
+                                // capitalizedSentence = capitalizedSentence.replaceAll("\\b"+inputIndexed+ "\\b", newValue);
                                 // capitalizedSentence = newValue;
                             }
                         }
