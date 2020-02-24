@@ -36,7 +36,6 @@ public class Server {
             capitalizedSentence = (clientSentence.toUpperCase() + '\n');
             String[] inputs;
             inputs = capitalizedSentence.split(delimiters);
-            System.out.println(inputs);
 
             for (int i = 0; i < wordArray.size(); i++){
 
