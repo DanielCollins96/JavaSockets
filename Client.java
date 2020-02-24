@@ -6,11 +6,26 @@ import java.io.*;
  */
 public class Client {
 
-    public static void main(String[] args) throws IOException{
-        Socket s = new Socket("localhost", 4999);
 
-        PrintWriter pr = new PrintWriter(s.getOutputStream());
-        pr.println("Hello World");
-        pr.flush();
+    public static void main(String[] args) throws IOException{
+        String sentence;
+        String modifiedSentence;
+        
+        BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+        Socket clientSocket = new Socket("localhost", 6789);
+        DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
+        BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+        sentence = inFromUser.readLine();
+        outToServer.writeBytes(sentence + '\n');
+
+        modifiedSentence = inFromServer.readLine();
+
+        
+
+        System.out.println("FROM SERVER: "+ modifiedSentence);
+
+        clientSocket.close();
+
     }
 }
