@@ -26,6 +26,7 @@ public class Server {
         // System.out.println(text.getAbsolutePath());        
         ServerSocket welcomeSocket = new ServerSocket(6789);
         while(true){
+            String delimiters = "\\s+|,\\s*|\\.\\s*";
             Socket connectionSocket = welcomeSocket.accept();
 
             BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
@@ -33,18 +34,26 @@ public class Server {
 
             clientSentence = inFromClient.readLine();
             capitalizedSentence = (clientSentence.toUpperCase() + '\n');
+            String[] inputs;
+            inputs = capitalizedSentence.split(delimiters);
+            System.out.println(inputs);
 
             for (int i = 0; i < wordArray.size(); i++){
 
                     for (String[] array: wordArray){
                         String wordCode = array[0];
-                        if (capitalizedSentence.equals(wordCode + '\n'))
+                        for (int j = 0; j < inputs.length; j++)
                         {
-                            // System.out.println(array[1]);
-                            String newValue = array[1] + '\n';
-                            capitalizedSentence = newValue;
-                        }
+                            String inputIndexed = inputs[j];
+                                System.out.println(inputIndexed);
 
+                            if (inputIndexed.equals(wordCode + '\n'));
+                            {
+                                String newValue = array[1] + '\n';
+                                capitalizedSentence = capitalizedSentence.replaceAll("\\b"+inputIndexed+ "\\b", newValue);
+                                // capitalizedSentence = newValue;
+                            }
+                        }
                     }
                 
             }
