@@ -27,7 +27,7 @@ public class Server {
         // System.out.println(text.getAbsolutePath());        
         ServerSocket welcomeSocket = new ServerSocket(6789);
         while(true){
-            String delimiters = "\\s+|,\\s*|\\.\\s*";
+            String delimiters = "\\s+|,\\s*|\\.\\s*|\\!|\\?";
             Socket connectionSocket = welcomeSocket.accept();
 
             BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
