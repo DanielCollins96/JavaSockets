@@ -12,7 +12,9 @@ public class Server {
         String capitalizedSentence;
 
         // File text = new File("H:\\3533\\JavaSockets\\codebook.txt");
-        File text = new File("H:\\3533-i\\JavaSockets\\codebook.txt");
+        // File text = new File("H:\\3533-i\\JavaSockets\\codebook.txt");
+        File text = new File("C:\\l\\Desktop\\Programmin\\School\\JavaSockets\\codebook.txt");
+
         ArrayList<String[]> wordArray = new ArrayList<String[]>();
 
         BufferedReader fileReader = new BufferedReader(new FileReader(text));
@@ -49,9 +51,6 @@ public class Server {
                             // if (inputIndexed.equals(wordCode + '\n'))
                             if (inputIndexed.equals(wordCode))
                             {
-                                System.out.println(inputIndexed);
-                                System.out.println(wordCode);
-                                System.out.println(wordCode + ' ' + inputIndexed);
                                 String newValue = array[1];
                                 capitalizedSentence = capitalizedSentence.replaceAll("\\b"+inputIndexed+ "\\b", newValue) + '\n';
                                 // capitalizedSentence = newValue;
@@ -60,7 +59,7 @@ public class Server {
                     }
                 
             }
-            System.out.println(capitalizedSentence);
+            // System.out.println(capitalizedSentence);
             outToClient.writeBytes(capitalizedSentence);
         } 
     }
