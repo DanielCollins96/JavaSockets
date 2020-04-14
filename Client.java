@@ -17,16 +17,18 @@ public class Client {
         Socket clientSocket = new Socket("localhost", 6789);
         DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
         BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-
-        sentence = inFromUser.readLine();
-        outToServer.writeBytes(sentence + '\n');
-
-        modifiedSentence = inFromServer.readLine();
-
-        System.out.println("FROM SERVER: "+ modifiedSentence);
-
+        //
+        while((sentence = inFromUser.readLine()) != null){
+            sentence = inFromUser.readLine();
+            outToServer.writeBytes(sentence + '\n');
+            
+            modifiedSentence = inFromServer.readLine();
+            
+            System.out.println("FROM SERVER: "+ modifiedSentence);
+            
+        }
         clientSocket.close();
-
+            
 
     }
 }
